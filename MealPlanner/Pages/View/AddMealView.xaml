@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealPlanner.Pages.View.AddMealView"
+             xmlns:viewmodel="clr-namespace:MealPlanner.ViewModel"
+             x:DataType="viewmodel:MealViewModel"
+             Title="Add new meal">
+    <Grid>
+        
+    <FlexLayout Direction="Column">
+        <Frame Margin="5" Padding="5" FlexLayout.Basis="600">
+                <VerticalStackLayout Padding="10">
+                    <!--<Entry Placeholder="Id" Text="{Binding Id}"/>-->
+                    <Entry Placeholder="Description" Text="{Binding Description}"/>
+                    <Entry Placeholder="Name" Text="{Binding Name}"/>
+                    <Button Text="Add" Command="{Binding SaveMealCommand}" Margin="10" />
+                </VerticalStackLayout>
+            </Frame>
+    </FlexLayout>
+    </Grid>
+</ContentPage>

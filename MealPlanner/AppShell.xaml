@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:MealPlanner.Pages"
     xmlns:local="clr-namespace:MealPlanner"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
     <!--<ShellContent
         Title="Home"
@@ -13,8 +13,11 @@
         Route="MainPage" />-->
 
     <ShellContent
-        Title="Home2"
+        Title="Home"
         ContentTemplate="{DataTemplate pages:HomePage}"
         Route="HomePage" />
-
+    <ShellContent
+        Title="Meals"
+        ContentTemplate="{DataTemplate pages:MealsPage}"
+        Route="MealsPage"/>
 </Shell>

@@ -1,4 +1,4 @@
-using MealPlanner.Models;
+using MealPlanner.Model;
 
 namespace MealPlanner.Pages;
 

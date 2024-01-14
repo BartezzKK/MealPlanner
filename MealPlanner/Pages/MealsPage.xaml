@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealPlanner.Pages.MealsPage"
+             Title="MealsPage">
+    <ScrollView>
+        <Grid>
+            <StackLayout>
+                <Button Clicked="Button_Clicked"  
+                        Text="Add" 
+                        HeightRequest="50" 
+                        WidthRequest="100" 
+                        HorizontalOptions="End" 
+                        Margin="0, 50, 0, 50"/>
+                <CollectionView x:Name="meals" ItemsSource="{Binding Meals}" ItemsLayout="VerticalList" EmptyView="Nie masz jeszcze dodanych posiłków">
+                    <CollectionView.Header>
+                        <VerticalStackLayout>
+                            <Label Text="Posiłki"></Label>
+                        </VerticalStackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".2*"/>
+                                        <ColumnDefinition Width=".8*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
+                                    <Label Text="{Binding Description}" Grid.Column="1" Grid.Row="0"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            
+        </Grid>
+        
+    </ScrollView>
+</ContentPage>
