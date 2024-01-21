@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using MealPlanner.Services;
+using MealPlanner.Pages;
 
 namespace MealPlanner.ViewModel
 {
@@ -31,7 +32,11 @@ namespace MealPlanner.ViewModel
         private async void SaveMeal()    
         {
             await mealService.AddAsync(ConvertToMeal(this));
-            await Shell.Current.GoToAsync("..");
+            //await Shell.Current.GoToAsync(nameof(MealsPage));
+            //App.Current.MainPage = new NavigationPage(new MealsPage(new MealListViewModel(mealService)));
+            //await Shell.Current.GoToAsync(nameof(MealsPage));
+            //await Shell.Current.GoToAsync("..", true);
+            await Application.Current.MainPage.Navigation.PushModalAsync(new MealsPage(new MealListViewModel(mealService)));
         }
 
         private Meal ConvertToMeal(MealViewModel mealViewModel)

@@ -20,16 +20,27 @@
                     </CollectionView.Header>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Margin="10">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width=".2*"/>
-                                        <ColumnDefinition Width=".8*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
-                                    <Label Text="{Binding Description}" Grid.Column="1" Grid.Row="0"/>
-                                </Grid>
-                            </Frame>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Usuń"
+                                        BackgroundColor="Red"
+                                        
+                                       />
+                                    </SwipeItems>
+                                    
+                                </SwipeView.RightItems>
+                                <Frame Margin="10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width=".2*"/>
+                                            <ColumnDefinition Width=".8*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
+                                        <Label Text="{Binding Description}" Grid.Column="1" Grid.Row="0"/>
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

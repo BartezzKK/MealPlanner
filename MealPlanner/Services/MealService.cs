@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace MealPlanner.Services
 {
@@ -28,7 +29,12 @@ namespace MealPlanner.Services
         {
             if(connection is null)
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MealPlanner.db3");
+                var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MealPlanner.db3");
+#if WINDOWS || IOS
+
+                dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MealPlanner.db3");
+
+#endif 
                 connection = new SQLiteAsyncConnection(dbPath);
                 await connection.CreateTableAsync<Meal>();
             }

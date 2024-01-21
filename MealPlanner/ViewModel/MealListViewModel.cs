@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MealPlanner.ViewModel
 {
-    public partial class MealListViewModel :ObservableObject
+    public partial class MealListViewModel : ObservableObject
     {
         private readonly IMealService mealService;
         public MealListViewModel(IMealService mealService)
@@ -26,11 +26,19 @@ namespace MealPlanner.ViewModel
         [ICommand]
         async void GetMeals()
         {
-            List<Meal> mealss = await mealService.GetAsync();
-            Meals.Add(new Meal { Id = 1, Description = "Lorem ipsum 1", Name = "Jajeczniczka" });
-            Meals.Add(new Meal { Id = 2, Description = "Lorem ipsum 2", Name = "Chlebek" });
-            Meals.Add(new Meal { Id = 3, Description = "Lorem ipsum 3", Name = "Tosty" });
-            Meals.Add(new Meal { Id = 4, Description = "Lorem ipsum 4", Name = "Omlet" });
+            List<Meal> meals = new();
+            try
+            {
+                meals = await mealService.GetAsync();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            foreach(var meal in meals) 
+            {
+                Meals.Add(meal);
+            };
         }
 
     }

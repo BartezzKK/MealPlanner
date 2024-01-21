@@ -21,7 +21,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddTransient<IMealService, MealService>();
+		builder.Services.AddSingleton<IMealService, MealService>();
 		builder.Services.AddTransient<MealPlanViewModel>();
 		builder.Services.AddTransient<MealsPage>();
 		builder.Services.AddTransient<MealViewModel>();
