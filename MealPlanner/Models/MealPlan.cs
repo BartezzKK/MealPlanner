@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MealPlanner.Model
 {
-    class MealPlan
+    public class MealPlan
     {
         public int Id { get; set; }
         public DateTime MealDate { get; set; }

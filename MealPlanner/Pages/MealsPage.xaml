@@ -24,8 +24,7 @@
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Usuń"
-                                        BackgroundColor="Red"
-                                        
+                                        BackgroundColor="Green"
                                        />
                                     </SwipeItems>
                                     
