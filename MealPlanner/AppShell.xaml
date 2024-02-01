@@ -4,20 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:MealPlanner.Pages"
-    xmlns:local="clr-namespace:MealPlanner"
-    Shell.FlyoutBehavior="Flyout">
+    xmlns:local="clr-namespace:MealPlanner">
 
     <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />-->
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate pages:HomePage}"
-        Route="HomePage" />
-    <ShellContent
-        Title="Meals"
-        ContentTemplate="{DataTemplate pages:MealsPage}"
-        Route="MealsPage"/>
+
+
+    <TabBar>
+        <Tab Title="Home" Icon="calendar.png">
+            <ShellContent
+                ContentTemplate="{DataTemplate pages:HomePage}"
+                Route="HomePage" />
+        </Tab>
+        <Tab Title="Meals" Icon="meal.png">
+            <ShellContent Title="Meals"
+                    ContentTemplate="{DataTemplate pages:MealsPage}"
+                    Route="MealsPage"/>
+        </Tab>
+    </TabBar>
+
 </Shell>

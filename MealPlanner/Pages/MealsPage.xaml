@@ -2,49 +2,58 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealPlanner.Pages.MealsPage"
-             Title="MealsPage">
+             Title="Lista posiłków"
+             xmlns:viewmodel="clr-namespace:MealPlanner.ViewModel">
     <ScrollView>
         <Grid>
             <StackLayout>
                 <Button Clicked="Button_Clicked"  
-                        Text="Add" 
+                        Text="Dodaj nowy posiłek" 
                         HeightRequest="50" 
-                        WidthRequest="100" 
-                        HorizontalOptions="End" 
-                        Margin="0, 50, 0, 50"/>
-                <CollectionView x:Name="meals" ItemsSource="{Binding Meals}" ItemsLayout="VerticalList" EmptyView="Nie masz jeszcze dodanych posiłków">
-                    <CollectionView.Header>
-                        <VerticalStackLayout>
-                            <Label Text="Posiłki"></Label>
-                        </VerticalStackLayout>
-                    </CollectionView.Header>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem Text="Usuń"
-                                        BackgroundColor="Green"
+                        WidthRequest="200"
+                        HorizontalOptions="CenterAndExpand"
+                        Margin="0, 10, 0, 10"
+                        CornerRadius="20"/>
+                <!--<RefreshView>-->
+                    <CollectionView x:Name="meals" ItemsSource="{Binding Meals}" ItemsLayout="VerticalList" EmptyView="Nie masz jeszcze dodanych posiłków">
+                        <CollectionView.Header>
+                            <VerticalStackLayout>
+                                <Label Text="Posiłki" HorizontalTextAlignment="Center" FontSize="Large"></Label>
+                            </VerticalStackLayout>
+                        </CollectionView.Header>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems SwipeBehaviorOnInvoked="Close" Mode="Execute">
+                                            <SwipeItem Text="Usuń"
+                                        BackgroundColor="Orange"
+                                                   IconImageSource="trash.png"
+                                                   Command="{Binding RemoveMealCommand,Source={RelativeSource AncestorType={x:Type viewmodel:MealListViewModel}}}"
+                                                   CommandParameter="{Binding .}"
+                                                   Clicked=""
                                        />
-                                    </SwipeItems>
-                                    
-                                </SwipeView.RightItems>
-                                <Frame Margin="10">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width=".2*"/>
-                                            <ColumnDefinition Width=".8*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
-                                        <Label Text="{Binding Description}" Grid.Column="1" Grid.Row="0"/>
-                                    </Grid>
-                                </Frame>
-                            </SwipeView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                        </SwipeItems>
+
+                                    </SwipeView.RightItems>
+                                    <Frame Margin="10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width=".2*"/>
+                                                <ColumnDefinition Width=".8*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
+                                            <Label Text="{Binding Description}" Grid.Column="1" Grid.Row="0"/>
+                                        </Grid>
+                                    </Frame>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                <!--</RefreshView>-->
             </StackLayout>
-            
+
         </Grid>
         
     </ScrollView>

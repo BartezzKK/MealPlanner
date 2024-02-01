@@ -35,22 +35,35 @@ namespace MealPlanner.Services
             }
         }
 
-        public Task<int> DeleteAsync(Meal meal)
+        public async Task<int> DeleteAsync(int id)
         {
             try
             {
-                mealRepository.DeleteAsync(meal);
-                return Task.FromResult(meal.Id);
+                Meal meal = await mealRepository.GetByIdAsync(id);
+                if (meal != null)
+                {
+                    mealRepository.DeleteAsync(meal);
+                    return meal.Id;
+                }
+                else
+                {
+                    return 0;
+                }
             }
             catch (Exception)
             {
-                return Task.FromResult(0);
+                return 0;
             }
         }
 
         public async Task<List<Meal>> GetAsync()
         {
             return await mealRepository.GetAsync();
+        }
+
+        public async Task<Meal> GetByIdAsync(int id)
+        {
+            return await mealRepository.GetByIdAsync(id);
         }
 
         public Task<int> UpdateAsync(Meal meal)

@@ -13,5 +13,6 @@ namespace MealPlanner.DAL.Interfaces
         void UpdateAsync(Meal meal);
         void DeleteAsync(Meal meal);
         Task<List<Meal>> GetAsync();
+        Task<Meal> GetByIdAsync(int id);
     }
 }

@@ -34,6 +34,11 @@ namespace MealPlanner.DAL
             return await context.Meals.ToListAsync();
         }
 
+        public async Task<Meal> GetByIdAsync(int id)
+        {
+            return await context.Meals.FindAsync(id);
+        }
+
         public async void UpdateAsync(Meal meal)
         {
             context.Meals.Update(meal);

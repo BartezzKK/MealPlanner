@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using MealPlanner.Services;
 using MealPlanner.Pages;
+using CommunityToolkit.Maui.Alerts;
 
 namespace MealPlanner.ViewModel
 {
@@ -31,12 +32,23 @@ namespace MealPlanner.ViewModel
         [ICommand]
         private async void SaveMeal()    
         {
-            await mealService.AddAsync(ConvertToMeal(this));
-            //await Shell.Current.GoToAsync(nameof(MealsPage));
-            //App.Current.MainPage = new NavigationPage(new MealsPage(new MealListViewModel(mealService)));
-            //await Shell.Current.GoToAsync(nameof(MealsPage));
-            //await Shell.Current.GoToAsync("..", true);
-            await Application.Current.MainPage.Navigation.PushModalAsync(new MealsPage(new MealListViewModel(mealService)));
+            try
+            {
+                int result = await mealService.AddAsync(ConvertToMeal(this));
+                if (result == 0)
+                {
+                    await Toast.Make($"Wystąpił błąd podczas zapisywania posiłku", CommunityToolkit.Maui.Core.ToastDuration.Long).Show();
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync("///MealsPage", true);
+                    await Toast.Make($"Nowy posiłek został dodany", CommunityToolkit.Maui.Core.ToastDuration.Long).Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                await Toast.Make($"Wystąpił błąd podczas dodawania posiłku", CommunityToolkit.Maui.Core.ToastDuration.Long).Show();
+            }
         }
 
         private Meal ConvertToMeal(MealViewModel mealViewModel)
