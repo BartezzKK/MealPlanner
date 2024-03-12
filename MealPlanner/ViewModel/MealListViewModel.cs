@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui.Alerts;
+using MealPlanner.Pages.View;
 
 
 namespace MealPlanner.ViewModel
@@ -49,6 +50,14 @@ namespace MealPlanner.ViewModel
             await mealService.DeleteAsync(meal.Id);
             Meals.Remove(meal);
             await Toast.Make($"Posiłek {meal.Name} został usunięty", CommunityToolkit.Maui.Core.ToastDuration.Long).Show();
+        }
+
+        [ICommand]
+        async void EditMeal(Meal meal)
+        {
+            var navPar = new Dictionary<string, object>();
+            navPar.Add("MealDetail", meal);
+            await Shell.Current.GoToAsync(nameof(EditMealView), navPar);
         }
 
         public void RefreshState()

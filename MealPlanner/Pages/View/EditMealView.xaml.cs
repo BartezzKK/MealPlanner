@@ -2,12 +2,11 @@ using MealPlanner.ViewModel;
 
 namespace MealPlanner.Pages.View;
 
-public partial class AddMealView : ContentPage
+public partial class EditMealView : ContentPage
 {
-	public AddMealView(MealViewModel mealViewModel)
+	public EditMealView(EditMealViewModel mealViewModel)
 	{
 		InitializeComponent();
 		BindingContext = mealViewModel;
 	}
-
 }

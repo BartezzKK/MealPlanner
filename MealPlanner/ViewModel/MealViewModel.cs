@@ -20,14 +20,14 @@ namespace MealPlanner.ViewModel
         {
             this.mealService = mealService;
         }
-        //[ObservableProperty]
-        //private int id;
+        [ObservableProperty]
+        private int id;
 
         [ObservableProperty]
-        private string description;
+        private string description = "";
 
         [ObservableProperty]
-        private string name;
+        private string name = "";
 
         [ICommand]
         private async void SaveMeal()    
@@ -51,6 +51,24 @@ namespace MealPlanner.ViewModel
             }
         }
 
+        [ICommand]
+        private async void UpdateMeal()
+        {
+            try
+            {
+                Meal meal = await mealService.GetByIdAsync(this.id);
+                if (meal != null)
+                {
+                    await mealService.UpdateAsync(meal);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         private Meal ConvertToMeal(MealViewModel mealViewModel)
         {
             return new Meal()
@@ -58,6 +76,11 @@ namespace MealPlanner.ViewModel
                 Name = mealViewModel.name,
                 Description = mealViewModel.description
             };
+        }
+
+        private MealViewModel ConvertToMealVM(Meal meal) 
+        {
+            return new MealViewModel(mealService) { Id = meal.Id, Description = meal.Description, Name = meal.Name };
         }
     }
 }

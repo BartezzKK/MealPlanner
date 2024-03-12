@@ -30,8 +30,10 @@ public static class MauiProgram
 		builder.Services.AddTransient<AddMealView>();
 		builder.Services.AddTransient<MealListViewModel>();
 		builder.Services.AddSingleton<IMealRpository, MealRepository>();
+        builder.Services.AddTransient<EditMealViewModel>();
+        builder.Services.AddTransient<EditMealView>();
 
-		var dbContext = new MPDbContext();
+        var dbContext = new MPDbContext();
 		dbContext.Database.EnsureCreated();
 		dbContext.Dispose();
 #if DEBUG

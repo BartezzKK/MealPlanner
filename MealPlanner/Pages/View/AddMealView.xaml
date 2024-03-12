@@ -4,7 +4,7 @@
              x:Class="MealPlanner.Pages.View.AddMealView"
              xmlns:viewmodel="clr-namespace:MealPlanner.ViewModel"
              x:DataType="viewmodel:MealViewModel"
-             Title="Add new meal">
+             Title="Nowy posiłek">
     <Grid>
         
     <FlexLayout Direction="Column">

@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+    <Nullable>enable</Nullable>
 		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
@@ -51,6 +52,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\calendar.png" />
 	  <None Remove="Resources\Images\meal.png" />
+	  <None Remove="Resources\Images\pencil.png" />
 	  <None Remove="Resources\Images\trash.png" />
 	</ItemGroup>
 
@@ -77,10 +79,9 @@
 	  <MauiXaml Update="Pages\View\AddMealView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Pages\NewFolder\" />
+	  <MauiXaml Update="Pages\View\EditMealView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionMealPlannerHideInfoBar="True" /></VisualStudio></ProjectExtensions>

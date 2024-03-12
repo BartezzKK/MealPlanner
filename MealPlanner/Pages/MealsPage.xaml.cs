@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Views;
 using MealPlanner.Model;
 using MealPlanner.Pages.View;
 using MealPlanner.ViewModel;
