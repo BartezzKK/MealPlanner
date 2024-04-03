@@ -1,0 +1,5 @@
+﻿dotnet ef migrations add Initial --startup-project ..\MealPlanner.Domain --project ..\MealPlanner.Domain
+
+dotnet tool update --global dotnet-ef
+
+dotnet ef database update

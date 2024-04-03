@@ -1,7 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MealPlanner.Model;
-using MealPlanner.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui.Alerts;
 using MealPlanner.Pages.View;
+using Domain.Services;
+using Domain.Models;
 
 
 namespace MealPlanner.ViewModel

@@ -1,5 +1,5 @@
-﻿using MealPlanner.DAL.Interfaces;
-using MealPlanner.Model;
+﻿using Domain.Models;
+using Domain.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MealPlanner.DAL
+namespace Domain.DAL
 {
     public class MealRepository : IMealRpository
     {

@@ -1,4 +1,4 @@
-﻿using MealPlanner.Model;
+﻿using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using MealPlanner.DAL;
-using MealPlanner.DAL.Interfaces;
+using Domain.DAL;
+using Domain.DAL.Interfaces;
 
-namespace MealPlanner.Services
+namespace Domain.Services
 {
     public class MealService : IMealService
     {

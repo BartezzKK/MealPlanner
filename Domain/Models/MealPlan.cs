@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MealPlanner.Model
+namespace Domain.Models
 {
     public class MealPlan
     {
@@ -12,5 +12,6 @@ namespace MealPlanner.Model
         public DateTime MealDate { get; set; }
         public int MealId { get; set; }
         public virtual Meal Meal { get; set; }
+
     }
 }

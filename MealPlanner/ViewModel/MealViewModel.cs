@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using MealPlanner.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
-using MealPlanner.Services;
 using MealPlanner.Pages;
 using CommunityToolkit.Maui.Alerts;
+using Domain.Services;
+using Domain.Models;
 
 namespace MealPlanner.ViewModel
 {
@@ -28,6 +28,15 @@ namespace MealPlanner.ViewModel
 
         [ObservableProperty]
         private string name = "";
+
+        [ObservableProperty]
+        private bool isBreakfast = false;
+
+        [ObservableProperty]
+        private bool isLunch = false;
+
+        [ObservableProperty]
+        private bool isDinner = false;
 
         [ICommand]
         private async void SaveMeal()    
@@ -74,13 +83,24 @@ namespace MealPlanner.ViewModel
             return new Meal()
             {
                 Name = mealViewModel.name,
-                Description = mealViewModel.description
+                Description = mealViewModel.description,
+                IsBreakfast = mealViewModel.IsBreakfast,
+                IsLunch = mealViewModel.IsLunch,
+                IsDinner = mealViewModel.IsDinner
             };
         }
 
-        private MealViewModel ConvertToMealVM(Meal meal) 
-        {
-            return new MealViewModel(mealService) { Id = meal.Id, Description = meal.Description, Name = meal.Name };
-        }
+        //private MealViewModel ConvertToMealVM(Meal meal) 
+        //{
+        //    return new MealViewModel(mealService)
+        //    {
+        //        Id = meal.Id,
+        //        Description = meal.Description,
+        //        Name = meal.Name,
+        //        IsBreakfast = meal.IsBreakfast,
+        //        IsLunch = meal.IsLunch,
+        //        IsDinner = meal.IsDinner
+        //    };
+        //}
     }
 }

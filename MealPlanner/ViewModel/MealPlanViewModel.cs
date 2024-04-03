@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace MealPlanner
 {
-    class MealPlanViewModel :   ObservableObject
+    public class MealPlanViewModel : ObservableObject
     {
+
     }
 }

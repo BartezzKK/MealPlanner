@@ -1,5 +1,5 @@
 using CommunityToolkit.Maui.Alerts;
-using MealPlanner.Model;
+using Domain.Models;
 
 namespace MealPlanner.Pages;
 

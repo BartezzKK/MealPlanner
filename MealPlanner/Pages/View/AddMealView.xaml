@@ -11,11 +11,24 @@
         <Frame Margin="5" Padding="5" FlexLayout.Basis="600">
                 <VerticalStackLayout Padding="10">
                     <!--<Entry Placeholder="Id" Text="{Binding Id}"/>-->
-                    <Entry Placeholder="Description" Text="{Binding Description}"/>
                     <Entry Placeholder="Name" Text="{Binding Name}"/>
+                    <Entry Placeholder="Description" Text="{Binding Description}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IsBreakfast}" Color="Red"/>
+                        <Label Text="Śniadanie" Margin="0,10,0,0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IsLunch}" Color="Green"/>
+                        <Label Text="Obiad" Margin="0,10,0,0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IsDinner}" Color="Blue"/>
+                        <Label Text="Kolacja" Margin="0,10,0,0"/>
+                    </StackLayout>
                     <Button Text="Add" Command="{Binding SaveMealCommand}" Margin="10" />
                 </VerticalStackLayout>
+
             </Frame>
-    </FlexLayout>
+        </FlexLayout>
     </Grid>
 </ContentPage>

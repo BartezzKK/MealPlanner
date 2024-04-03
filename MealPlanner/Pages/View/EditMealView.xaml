@@ -9,10 +9,44 @@
         <FlexLayout Direction="Column">
             <Frame Margin="5" Padding="5" FlexLayout.Basis="600">
                 <VerticalStackLayout Padding="10">
-                    <Entry Placeholder="Id" Text="{Binding EditMeal.Id}" IsVisible="false"/>
-                    <Entry Placeholder="Name" Text="{Binding EditMeal.Name}"/>
-                    <Editor Placeholder="Description" Text="{Binding EditMeal.Description}" HeightRequest="70" AutoSize="TextChanges"/>
-                    <Button Text="Zapisz" Command="{Binding UpdateMealCommand}" Margin="10" />
+                    <Entry
+                           Placeholder="Id" 
+                           Text="{Binding EditMeal.Id}" 
+                           IsVisible="false"/>
+                    <Entry x:Name="entryName" 
+                           Placeholder="Name" 
+                           Text="{Binding EditMeal.Name}"
+                           IsEnabled="False"/>
+                    <Editor x:Name="entryDescription" 
+                            Placeholder="Description" 
+                            Text="{Binding EditMeal.Description}" 
+                            MinimumHeightRequest="150"
+                            MaximumHeightRequest="350"
+                            AutoSize="TextChanges"
+                            IsEnabled="False"/>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox 
+                            x:Name="cbIsBreakfast" 
+                            IsChecked="{Binding EditMeal.IsBreakfast}" 
+                            Color="Red" IsEnabled="False"/>
+                        <Label Text="Śniadanie" Margin="0,10,0,0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox x:Name="cbIsLunch" 
+                                  IsChecked="{Binding EditMeal.IsLunch}" 
+                                  Color="Green"
+                                  IsEnabled="False"/>
+                        <Label Text="Obiad" Margin="0,10,0,0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox x:Name="cbIsDinner" 
+                                  IsChecked="{Binding EditMeal.IsDinner}" 
+                                  Color="Blue"
+                                  IsEnabled="False"/>
+                        <Label Text="Kolacja" Margin="0,10,0,0"/>
+                    </StackLayout>
+                    <Button x:Name="btnEnableEdit" Text="Edytuj" Clicked="btnEnableEdit_Clicked"/>
+                    <Button x:Name="btnSave" Text="Zapisz" Command="{Binding UpdateMealCommand}" Margin="10" IsVisible="false"/>
                 </VerticalStackLayout>
             </Frame>
         </FlexLayout>

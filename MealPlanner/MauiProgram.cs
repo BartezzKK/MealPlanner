@@ -1,11 +1,13 @@
 ﻿using MealPlanner.Pages;
-using MealPlanner.Services;
 using MealPlanner.ViewModel;
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
 using MealPlanner.Pages.View;
-using MealPlanner.DAL;
-using MealPlanner.DAL.Interfaces;
+using Domain.DAL;
+using Domain.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using Domain.Services;
 
 namespace MealPlanner;
 
@@ -22,8 +24,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-		builder.Services.AddDbContext<MPDbContext>();
-		builder.Services.AddSingleton<IMealService, MealService>();
+        string dbConnection = $"Filename={GetPath("MealPlanner.db3")}";
+        builder.Services.AddDbContext<MPDbContext>();
+        builder.Services.AddSingleton<IMealService, MealService>();
 		builder.Services.AddTransient<MealPlanViewModel>();
 		builder.Services.AddTransient<MealsPage>();
 		builder.Services.AddTransient<MealViewModel>();
@@ -32,14 +35,19 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IMealRpository, MealRepository>();
         builder.Services.AddTransient<EditMealViewModel>();
         builder.Services.AddTransient<EditMealView>();
-
-        var dbContext = new MPDbContext();
-		dbContext.Database.EnsureCreated();
-		dbContext.Dispose();
 #if DEBUG
-        builder.Logging.AddDebug();
+		builder.Logging.AddDebug();
 #endif
-
-		return builder.Build();
+        //builder.UseSqlite(dbConnection, x => x.MigrationsAssembly(nameof(MealPlanner.Domain)));
+        return builder.Build();
 	}
+
+    public static string GetPath(string dbName)
+    {
+        var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), dbName);
+#if WINDOWS || IOS
+            dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dbPath);
+#endif
+        return dbPath;
+    }
 }
