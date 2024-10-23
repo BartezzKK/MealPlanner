@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Domain.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace Domain.DAL.Interfaces
         void DeleteAsync(Meal meal);
         Task<List<Meal>> GetAsync();
         Task<Meal> GetByIdAsync(int id);
+        Task<Meal> GetRandomMealByType(TypeOfMeal type);
+        Task<int> CountByType(TypeOfMeal type);
     }
 }

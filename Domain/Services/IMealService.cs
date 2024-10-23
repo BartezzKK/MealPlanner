@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Domain.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,6 @@ namespace Domain.Services
         Task<int> DeleteAsync(int id);
         Task<List<Meal>> GetAsync();
         Task<Meal> GetByIdAsync(int id);
-
+        Task<Meal> GetRandomMealByType(TypeOfMeal typeOfMeal);
     }
 }

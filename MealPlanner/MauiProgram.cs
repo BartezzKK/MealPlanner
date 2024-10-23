@@ -27,16 +27,20 @@ public static class MauiProgram
         string dbConnection = $"Filename={GetPath("MealPlanner.db3")}";
         builder.Services.AddDbContext<MPDbContext>();
         builder.Services.AddSingleton<IMealService, MealService>();
-		builder.Services.AddTransient<MealPlanViewModel>();
-		builder.Services.AddTransient<MealsPage>();
-		builder.Services.AddTransient<MealViewModel>();
+        builder.Services.AddSingleton<IMealPlanService, MealPlanService>();
+        //builder.Services.AddTransient<MealPlanViewModel>();
+        builder.Services.AddTransient<MealsPage>();
+        builder.Services.AddTransient<HomePage>();
+        builder.Services.AddTransient<MealViewModel>();
 		builder.Services.AddTransient<AddMealView>();
 		builder.Services.AddTransient<MealListViewModel>();
 		builder.Services.AddSingleton<IMealRpository, MealRepository>();
+		builder.Services.AddSingleton<IMealPlanRepository, MealPlanRepository>();
         builder.Services.AddTransient<EditMealViewModel>();
         builder.Services.AddTransient<EditMealView>();
+        builder.Services.AddTransient<MealPlansViewModel>();
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
         //builder.UseSqlite(dbConnection, x => x.MigrationsAssembly(nameof(MealPlanner.Domain)));
         return builder.Build();

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SQLite;
 using Domain.DAL;
 using Domain.DAL.Interfaces;
+using Domain.Models.Enums;
 
 namespace Domain.Services
 {
@@ -65,6 +66,11 @@ namespace Domain.Services
             return await mealRepository.GetByIdAsync(id);
         }
 
+        public Task<Meal> GetRandomMealByType(TypeOfMeal typeOfMeal)
+        {
+            return mealRepository.GetRandomMealByType(typeOfMeal);
+        }
+
         public Task<int> UpdateAsync(Meal meal)
         {
             try
@@ -77,5 +83,6 @@ namespace Domain.Services
                 return Task.FromResult(0);
             }
         }
+
     }
 }

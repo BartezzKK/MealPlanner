@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealPlanner.Pages.HomePage"
-             Title="HomePage">
+             Title="Home Page"
+             xmlns:viewmodel="clr-namespace:MealPlanner.ViewModel">
 
-    <ScrollView>
-        <!--<CollectionView x:Name="mealPlans" ItemsLayout="VerticalList" >-->
-        <CollectionView x:Name="mealPlans" ItemsLayout="VerticalList" EmptyView="Nie masz jeszcze zaplanowanych żadnych posiłków">
+    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <CollectionView x:Name="mealPlans" ItemsSource="{Binding Plans}" ItemsLayout="VerticalList" EmptyView="Nie masz jeszcze zaplanowanych żadnych posiłków">
             <CollectionView.Header>
                 <VerticalStackLayout BackgroundColor="Black" Padding="5">
-                    <Label Text="Zaplanowane posiłki" TextColor="White" FontSize="Medium"/>
+                    <Label  Text="Zaplanowane posiłki" TextColor="White" FontSize="Medium"/>
                 </VerticalStackLayout>
             </CollectionView.Header>
             <CollectionView.ItemTemplate>
@@ -21,13 +21,12 @@
                                 <ColumnDefinition Width=".8*"/>
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding MealDate}" Grid.Column="0" Grid.Row="0"/>
-                            <Label Text="Test21312" Grid.Column="1" Grid.Row="0"/>
-                            <!--<Label Text="{Binding MealId}" Grid.Column="1" Grid.Row="0"/>-->
+                            <Label Text="{Binding Meal.Name}" Grid.Column="1" Grid.Row="0"/>
 
                         </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </ScrollView>
+    </RefreshView>
 </ContentPage>

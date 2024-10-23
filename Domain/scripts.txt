@@ -3,3 +3,8 @@
 dotnet tool update --global dotnet-ef
 
 dotnet ef database update
+
+
+to add migration 
+dotnet ef migrations add AddedMealType
+in Domain catalog

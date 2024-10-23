@@ -21,7 +21,7 @@ namespace MealPlanner.ViewModel
         {
             Meals = new ObservableCollection<Meal>();
             this.mealService = mealService;
-            GetMeals();
+            //GetMeals();
         }
         [ObservableProperty]
         private ObservableCollection<Meal> meals = new();

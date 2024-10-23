@@ -28,5 +28,6 @@ public partial class MealsPage : ContentPage
         base.OnAppearing();
         MealListViewModel ml = (MealListViewModel)BindingContext;
         ml.RefreshState();
+        BindingContext = ml;
     }
 }
